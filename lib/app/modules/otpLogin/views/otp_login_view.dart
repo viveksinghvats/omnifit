@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
-import 'package:omnifit/app/modules/otpverify/views/otpverify_view.dart';
 import 'package:omnifit/app/routes/app_pages.dart';
 
-import '../controllers/otplogin_controller.dart';
-import 'package:omnifit/components/designs.dart';
+import '../../otpverify/views/otp_verify_view.dart';
+import '../controllers/otp_login_controller.dart';
 
-class OtpLoginView extends GetView<OtploginController> {
+class OtpLoginView extends GetView<OtpLoginController> {
   TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class OtpLoginView extends GetView<OtploginController> {
         appBar: AppBar(
           title: Text('Phone Login'),
         ),
-        drawer: drawerScreen(context),
+        drawer: Drawer(),
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -62,11 +61,10 @@ class OtpLoginView extends GetView<OtploginController> {
                 child: FlatButton(
                   color: Colors.green[400],
                   onPressed: () {
-                    Get.to(OtpverifyView(),
-                        arguments: _controller.text,
-                        transition: Transition.cupertino,
-                        duration: Duration(seconds: 1),
-                        curve: Curves.bounceInOut);
+                    Get.toNamed(
+                      Routes.OTP_VERIFY,
+                      arguments: _controller.text,
+                    );
                   },
                   child: Text(
                     'Next',

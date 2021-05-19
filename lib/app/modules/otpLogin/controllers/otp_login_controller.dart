@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class OtpverifyController extends GetxController {
-  //TODO: Implement OtpverifyController
+class OtpLoginController extends GetxController {
+  //TODO: Implement OtpLoginController
 
   final count = 0.obs;
   @override

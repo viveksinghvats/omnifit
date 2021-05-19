@@ -2,15 +2,13 @@ part of 'app_pages.dart';
 // DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
 
 abstract class Routes {
-  static const OTPLOGIN = _Paths.OTPLOGIN;
-  static const REGISTER = _Paths.REGISTER;
   static const HOME = _Paths.HOME;
-  static const OTPVERIFY = _Paths.OTPVERIFY;
+  static const OTP_LOGIN = _Paths.OTP_LOGIN;
+  static const OTP_VERIFY = _Paths.OTP_VERIFY;
 }
 
 abstract class _Paths {
-  static const OTPLOGIN = '/otplogin';
-  static const REGISTER = '/register';
   static const HOME = '/home';
-  static const OTPVERIFY = '/otpverify';
+  static const OTP_LOGIN = '/otp-login';
+  static const OTP_VERIFY = '/otp-verify';
 }

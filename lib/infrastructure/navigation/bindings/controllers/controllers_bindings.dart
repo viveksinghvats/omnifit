@@ -1,1 +1,0 @@
-export 'package:omnifit/infrastructure/navigation/bindings/controllers/home.controller.binding.dart'; 
