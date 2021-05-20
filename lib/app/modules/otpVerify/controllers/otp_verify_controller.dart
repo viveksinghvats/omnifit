@@ -1,16 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:omnifit/app/routes/app_pages.dart';
 
 class OtpVerifyController extends GetxController {
-  final count = 0.obs;
-  final phone = Get.arguments.obs;
-  RxString _verificationCode = "".obs;
+  dynamic phone = Get.arguments;
+  String _verificationCode;
 
   @override
   void onInit() {
-    _verifyPhone();
     super.onInit();
+    _verifyPhone();
   }
 
   @override
@@ -20,9 +20,9 @@ class OtpVerifyController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 
   void _verifyPhone() async {
+    print("Calling Verify Phone For Phone No : $phone");
     await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: '+91$phone',
         verificationCompleted: (PhoneAuthCredential credential) async {
@@ -30,7 +30,12 @@ class OtpVerifyController extends GetxController {
               .signInWithCredential(credential)
               .then((value) async {
             if (value.user != null) {
-              Get.toNamed(Routes.HOME);
+              print("Calling Home From Verify Phone");
+              Get.offAndToNamed(Routes.HOME);
+            } else {
+              Get.snackbar(
+                  "Invalid Otp", "Entered Otp Don't Match Please Try Again",
+                  snackPosition: SnackPosition.BOTTOM);
             }
           });
         },
@@ -38,23 +43,27 @@ class OtpVerifyController extends GetxController {
           print(e.message);
         },
         codeSent: (String verficationID, int resendToken) {
-          _verificationCode = verficationID as RxString;
+          _verificationCode = verficationID;
         },
         codeAutoRetrievalTimeout: (String verificationID) {
-          _verificationCode = verificationID as RxString;
+          _verificationCode = verificationID;
         },
-        timeout: Duration(seconds: 300));
+        timeout: Duration(seconds: 120));
   }
 
   Future<bool> verifyOtp(dynamic otp) async {
+    print("verificationCode : $_verificationCode And Otp : $otp");
     try {
       await FirebaseAuth.instance
           .signInWithCredential(PhoneAuthProvider.credential(
-              verificationId: _verificationCode.toString(), smsCode: otp))
+              verificationId: _verificationCode, smsCode: otp))
           .then((value) async {
+        print("User Value :$value");
         if (value.user != null) {
+          Get.offAndToNamed(Routes.HOME);
           return true;
-        }
+        } else
+          return false;
       });
       return false;
     } catch (e) {

@@ -41,13 +41,11 @@ class OtpVerifyView extends GetView<OtpVerifyController> {
               followingFieldDecoration: pinPutDecoration,
               pinAnimationType: PinAnimationType.fade,
               onSubmit: (otp) async {
-                if (await controller.verifyOtp(otp)) {
-                  Get.toNamed(Routes.HOME);
-                } else {
+                if (!await controller.verifyOtp(otp)) {
                   FocusScope.of(context).unfocus();
-                  SnackBar(
-                    content: Text('Invalid Otp'),
-                  );
+                  Get.snackbar(
+                      "Invalid Otp", "Entered Otp Don't Match Please Try Again",
+                      snackPosition: SnackPosition.BOTTOM);
                 }
               },
             ),

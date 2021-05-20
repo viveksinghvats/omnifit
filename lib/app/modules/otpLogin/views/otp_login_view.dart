@@ -8,16 +8,16 @@ import '../../otpverify/views/otp_verify_view.dart';
 import '../controllers/otp_login_controller.dart';
 
 class OtpLoginView extends GetView<OtpLoginController> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(360, 690),
+      designSize: const Size(360, 690),
       builder: () => Scaffold(
         appBar: AppBar(
-          title: Text('Phone Login'),
+          title: const Text('Phone Login'),
         ),
-        drawer: Drawer(),
+        drawer: const Drawer(),
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -30,8 +30,8 @@ class OtpLoginView extends GetView<OtpLoginController> {
             children: [
               Column(children: [
                 Container(
-                  margin: EdgeInsets.only(top: 60),
-                  child: Center(
+                  margin: const EdgeInsets.only(top: 60),
+                  child: const Center(
                     child: Text(
                       'Sign In',
                       style:
@@ -40,9 +40,9 @@ class OtpLoginView extends GetView<OtpLoginController> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 40, right: 10, left: 10),
+                  margin: const EdgeInsets.only(top: 40, right: 10, left: 10),
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Phone Number',
                       prefix: Padding(
                         padding: EdgeInsets.all(4),
@@ -56,7 +56,7 @@ class OtpLoginView extends GetView<OtpLoginController> {
                 )
               ]),
               Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 width: double.infinity,
                 child: FlatButton(
                   color: Colors.green[400],
@@ -66,7 +66,7 @@ class OtpLoginView extends GetView<OtpLoginController> {
                       arguments: _controller.text,
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     'Next',
                     style: TextStyle(color: Colors.white),
                   ),
