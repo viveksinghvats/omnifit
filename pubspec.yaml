@@ -78,3 +78,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  # flutter build apk --build-name=1.0.1 --build-number=2
+  # ./gradlew signingreport
