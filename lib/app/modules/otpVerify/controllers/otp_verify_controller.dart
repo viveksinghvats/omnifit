@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:omnifit/app/routes/app_pages.dart';
 
 class OtpVerifyController extends GetxController {
   dynamic phone = Get.arguments;
   String _verificationCode;
-
+  final box = GetStorage();
   @override
   void onInit() {
     super.onInit();
@@ -60,12 +61,12 @@ class OtpVerifyController extends GetxController {
           .then((value) async {
         print("User Value :$value");
         if (value.user != null) {
-          Get.offAndToNamed(Routes.HOME);
+          box.write("fuid", value.user.uid);
+          Get.offAndToNamed(Routes.SIGNUP);
           return true;
         } else
           return false;
       });
-      return false;
     } catch (e) {
       return false;
     }

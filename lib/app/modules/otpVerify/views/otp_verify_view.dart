@@ -44,7 +44,7 @@ class OtpVerifyView extends GetView<OtpVerifyController> {
                 if (!await controller.verifyOtp(otp)) {
                   FocusScope.of(context).unfocus();
                   Get.snackbar(
-                      "Invalid Otp", "Entered Otp Don't Match Please Try Again",
+                      "Invalid Otp", "Enter Otp Don't Match Please Try Again",
                       snackPosition: SnackPosition.BOTTOM);
                 }
               },

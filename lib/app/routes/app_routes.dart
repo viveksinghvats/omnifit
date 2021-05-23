@@ -5,10 +5,12 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const OTP_LOGIN = _Paths.OTP_LOGIN;
   static const OTP_VERIFY = _Paths.OTP_VERIFY;
+  static const SIGNUP = _Paths.SIGNUP;
 }
 
 abstract class _Paths {
   static const HOME = '/home';
   static const OTP_LOGIN = '/otp-login';
   static const OTP_VERIFY = '/otp-verify';
+  static const SIGNUP = '/signup';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 import 'package:omnifit/app/modules/home/bindings/home_binding.dart';
@@ -7,6 +8,8 @@ import 'package:omnifit/app/modules/otpLogin/bindings/otp_login_binding.dart';
 import 'package:omnifit/app/modules/otpLogin/views/otp_login_view.dart';
 import 'package:omnifit/app/modules/otpVerify/bindings/otp_verify_binding.dart';
 import 'package:omnifit/app/modules/otpVerify/views/otp_verify_view.dart';
+import 'package:omnifit/app/modules/signup/bindings/signup_binding.dart';
+import 'package:omnifit/app/modules/signup/views/signup_view.dart';
 
 part 'app_routes.dart';
 
@@ -29,6 +32,11 @@ class AppPages {
       name: _Paths.OTP_VERIFY,
       page: () => OtpVerifyView(),
       binding: OtpVerifyBinding(),
+    ),
+    GetPage(
+      name: _Paths.SIGNUP,
+      page: () => SignupView(),
+      binding: SignupBinding(),
     ),
   ];
 }
