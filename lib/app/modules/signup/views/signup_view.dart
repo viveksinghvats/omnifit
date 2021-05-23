@@ -13,17 +13,24 @@ class SignupView extends GetView<SignupController> {
       designSize: const Size(360, 690),
       builder: () => SafeArea(
         child: Scaffold(
-            body: Column(
-          children: [
-            Container(
-                height: 690,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.teal[100], Colors.cyan[100]])),
-                child: TextFormFieldDemo()),
-          ],
-        )),
+            appBar: AppBar(
+              title: Text("SignUp"),
+            ),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                      height: 640.h,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [Colors.teal[200], Colors.white],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight)),
+                      child: TextFormFieldDemo()),
+                ],
+              ),
+            )),
       ),
     );
   }

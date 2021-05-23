@@ -16,6 +16,7 @@ Future<void> main() async {
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      defaultTransition: Transition.cupertino,
       theme: ThemeData(
         brightness: Brightness.light,
         fontFamily: 'Georgia',
